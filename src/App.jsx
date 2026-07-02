@@ -60,35 +60,46 @@ const AUDIENCE = [
 
 const SERVICES = [
   {
-    label: 'Tesis',
-    title: 'Asesoría de tesis e investigación',
-    text: 'Tema, problema, objetivos, preguntas de investigación y estructura metodológica.',
-  },
-  {
-    label: 'Ciclo de vida',
-    title: 'Análisis de ciclo de vida, flujo de materiales y sostenibilidad cuantitativa',
-    text: 'Límites del sistema, datos, inventarios, supuestos y comunicación de resultados.',
-  },
-  {
-    label: 'Baterías',
-    title: 'Economía circular y baterías',
-    text: 'Circularidad, reúso, segunda vida, reciclaje y sistemas de baterías.',
-  },
-  {
-    label: 'Tesis',
-    title: 'Revisión de resultados y presentaciones',
-    text: 'Interpretación, figuras, narrativa y comunicación de hallazgos académicos.',
-  },
-  {
-    label: 'IA',
-    title: 'IA para tesis e investigación',
-    text: 'Lectura de papers, literatura, redacción y flujos de trabajo reproducibles.',
-  },
-  {
+    number: '01',
     label: 'Becas',
-    title: 'Mentoría para becas, maestrías y PhD',
-    text: 'CV, cartas de motivación, programas, estrategia de postulación y procesos internacionales.',
-    secondary: true,
+    title: 'Asesoría de becas internacionales',
+    text: 'Orientación para identificar becas, preparar postulaciones y entender qué buscan los programas en Europa y otros destinos.',
+    includes: [
+      'Swedish Institute y otras becas relevantes',
+      'Revisión de CV y perfil académico',
+      'Cartas de motivación y estrategia de postulación',
+      'Plazos, requisitos y errores frecuentes',
+    ],
+    pdf: '/docs/asesoria-becas.pdf',
+    variant: 'becas',
+  },
+  {
+    number: '02',
+    label: 'Máster y PhD',
+    title: 'Asesoría de aplicación de máster y doctorado',
+    text: 'Apoyo para postular con claridad a programas internacionales de posgrado, desde la búsqueda hasta entrevistas y decisiones finales.',
+    includes: [
+      'Búsqueda y selección de programas',
+      'CV académico, cartas y correos a supervisores',
+      'Preparación para entrevistas de admisión',
+      'Estrategia cuando postulas a varios procesos',
+    ],
+    pdf: '/docs/aplicacion-master-phd.pdf',
+    variant: 'postgrado',
+  },
+  {
+    number: '03',
+    label: 'Tesis',
+    title: 'Asesoría de tesis',
+    text: 'Acompañamiento en tesis e investigación aplicada en sostenibilidad, economía circular, baterías y métodos cuantitativos.',
+    includes: [
+      'Tema, objetivos, metodología y estructura',
+      'Análisis de ciclo de vida y flujo de materiales',
+      'Economía circular, baterías e interpretación de resultados',
+      'IA para investigación y comunicación académica',
+    ],
+    pdf: '/docs/asesoria-tesis.pdf',
+    variant: 'tesis',
   },
 ]
 
@@ -438,17 +449,39 @@ function App() {
             <span className="section__eyebrow section__eyebrow--center">Asesorías</span>
             <h2 className="section__title section__title--center">Servicios</h2>
             <p className="section__subtitle section__subtitle--center">
-              Sesiones prácticas para avanzar con claridad en tu tesis o investigación aplicada.
+              Tres líneas de acompañamiento para avanzar con claridad en becas, posgrado internacional
+              o tesis en sostenibilidad e investigación aplicada.
             </p>
-            <div className="services-grid">
+            <div className="services-grid services-grid--main">
               {SERVICES.map((service) => (
                 <article
                   key={service.title}
-                  className={`service-card ${service.secondary ? 'service-card--secondary' : ''}`}
+                  className={`service-card service-card--main service-card--${service.variant}`}
                 >
-                  <span className="service-card__label">{service.label}</span>
+                  <div className="service-card__head">
+                    <span className="service-card__number">{service.number}</span>
+                    <span className="service-card__label">{service.label}</span>
+                  </div>
                   <h3 className="service-card__title">{service.title}</h3>
                   <p className="service-card__text">{service.text}</p>
+                  <ul className="service-card__includes">
+                    {service.includes.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <div className="service-card__actions">
+                    <a
+                      href={service.pdf}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn--outline service-card__btn"
+                    >
+                      Ver información
+                    </a>
+                    <a href="#contacto" className="btn btn--primary service-card__btn">
+                      Agendar asesoría
+                    </a>
+                  </div>
                 </article>
               ))}
             </div>

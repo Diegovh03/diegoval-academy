@@ -968,7 +968,11 @@ button:focus-visible {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.15rem;
+  gap: 1.25rem;
+}
+
+.services-grid--main {
+  align-items: stretch;
 }
 
 .service-card {
@@ -980,9 +984,36 @@ button:focus-visible {
   transition: transform 0.25s, box-shadow 0.25s;
 }
 
+.service-card--main {
+  display: flex;
+  flex-direction: column;
+  padding: 1.85rem 1.65rem 1.65rem;
+  border-radius: var(--radius-lg);
+  border-top: 4px solid var(--teal);
+}
+
+.service-card--becas { border-top-color: var(--sand); }
+.service-card--postgrado { border-top-color: var(--teal); }
+.service-card--tesis { border-top-color: var(--blue-deep); }
+
 .service-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+}
+
+.service-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.service-card__number {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(11, 31, 51, 0.12);
+  line-height: 1;
 }
 
 .service-card__label {
@@ -995,27 +1026,64 @@ button:focus-visible {
   background: var(--green-soft);
   padding: 0.25rem 0.55rem;
   border-radius: var(--radius-full);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0;
 }
 
 .service-card__title {
-  font-size: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--blue-deep);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.65rem;
   line-height: 1.35;
 }
 
 .service-card__text {
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
+  margin-bottom: 1.15rem;
 }
 
-.service-card--secondary {
-  border-style: dashed;
-  background: transparent;
-  opacity: 0.92;
+.service-card__includes {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-card__includes li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.86rem;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.service-card__includes li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.service-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: auto;
+}
+
+.service-card__btn {
+  width: 100%;
+  font-size: 0.88rem;
+  padding: 0.75rem 1rem;
 }
 
 /* ─── Rutas Profesionales — iniciativa comunitaria ───────────── */
@@ -1948,6 +2016,13 @@ button:focus-visible {
 
   .services-grid,
   .courses-grid { grid-template-columns: 1fr; }
+
+  .service-card__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .service-card__btn { flex: 1; min-width: 140px; }
 
   .rutas__topics { grid-template-columns: 1fr; }
   .rutas__intro { margin-inline: auto; }
