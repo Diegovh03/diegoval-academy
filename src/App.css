@@ -1498,6 +1498,72 @@ button:focus-visible {
   box-shadow: 0 6px 20px rgba(15, 76, 69, 0.28);
 }
 
+/* ─── Telegram CTA ──────────────────────────────────────────── */
+
+.telegram-cta {
+  padding-block: 0 3.5rem;
+  background: var(--gray-light);
+}
+
+.telegram-cta__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, var(--blue-deep) 0%, #0a3d5c 100%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.telegram-cta__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(34, 158, 217, 0.15);
+  border-radius: 50%;
+  color: #54b3e8;
+}
+
+.telegram-cta__content {
+  flex: 1;
+  min-width: 200px;
+}
+
+.telegram-cta__title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.35rem;
+  line-height: 1.3;
+}
+
+.telegram-cta__text {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
+  max-width: 520px;
+}
+
+.btn--telegram {
+  flex-shrink: 0;
+  background: #229ED9;
+  color: var(--white);
+  border: 2px solid #229ED9;
+  box-shadow: 0 4px 16px rgba(34, 158, 217, 0.35);
+}
+
+.btn--telegram:hover {
+  background: #1a8bc4;
+  border-color: #1a8bc4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(34, 158, 217, 0.45);
+}
+
 /* ─── Cursos — estilo producto ──────────────────────────────── */
 
 .section--courses {
@@ -2057,4 +2123,13 @@ button:focus-visible {
   .footer__nav { justify-content: center; width: 100%; }
 
   .about__highlights { grid-template-columns: 1fr; }
+
+  .telegram-cta__inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .telegram-cta__text { margin-inline: auto; }
+  .btn--telegram { width: 100%; }
 }
